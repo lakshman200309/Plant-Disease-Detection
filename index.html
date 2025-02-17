@@ -23,6 +23,18 @@
             transform: scale(1.05);
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
         }
+        .blink-text {
+            animation: blink-animation 1.5s steps(1, start) infinite;
+            color: red;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        @keyframes blink-animation {
+            50% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white font-roboto flex flex-col min-h-screen">
@@ -51,14 +63,45 @@
         <main class="container mx-auto mt-10 p-4">
             <section class="bg-gray-800 p-6 rounded-lg shadow-lg hover:bg-gray-700 transition-colors duration-300">
                 <h2 class="text-2xl font-bold mb-4">About This Project</h2>
-                <p class="text-gray-300">The Plant Disease Detection project aims to assist farmers and gardeners in identifying diseases in their plants through image recognition. By leveraging the power of deep learning and the InceptionV3 model, this application can accurately predict the type of disease affecting a plant based on an uploaded image.</p>
-                <p class="text-gray-300 mt-4">Key Features:</p>
-                <ul class="list-disc list-inside text-gray-300 mt-2">
-                    <li>Easy-to-use interface for uploading plant images.</li>
-                    <li>Accurate disease prediction using a trained deep learning model.</li>
-                    <li>Support for multiple types of plant diseases.</li>
+                <p class="text-gray-300">Our Plant Disease Detection System is an AI-powered web application designed to help farmers, gardeners, and researchers identify plant diseases quickly and accurately. By simply uploading an image of a plant leaf, users can receive instant disease predictions, enabling them to take preventive or corrective measures promptly.</p>
+            </section>
+    
+            <!-- Key Features Section -->
+            <section class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6 hover:bg-gray-700 transition-colors duration-300">
+                <h3 class="text-lg font-semibold text-gray-300 mb-4">Key Features</h3>
+                <ul class="list-disc list-inside text-gray-300 mt-2 space-y-2">
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-brain mr-2"></i>AI-Powered Disease Detection – Uses deep learning models to analyze plant leaf images and detect diseases.</li>
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-user-friends mr-2"></i>User-Friendly Interface – A simple and intuitive web application built using HTML, CSS, and Flask.</li>
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-tachometer-alt mr-2"></i>Fast and Accurate Results – Provides quick analysis to assist in decision-making.</li>
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-cogs mr-2"></i>Scalable and Expandable – Designed for further enhancements, such as treatment suggestions and growth tips.</li>
                 </ul>
-                <p class="text-gray-300 mt-4">This project was developed to provide a quick and reliable tool for plant disease detection, helping to improve crop health and yield.</p>
+            </section>
+    
+            <!-- Technologies Used Section -->
+            <section class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6 hover:bg-gray-700 transition-colors duration-300">
+                <h3 class="text-lg font-semibold text-gray-300 mb-4">Technologies Used</h3>
+                <ul class="list-disc list-inside text-gray-300 mt-2 space-y-2">
+                    <li class="hover:text-green-400 hover:underline"><i class="fab fa-python mr-2"></i>Python & Flask – Backend development and API handling.</li>
+                    <li class="hover:text-green-400 hover:underline"><i class="fab fa-html5 mr-2"></i>HTML, CSS – Frontend for user-friendly interaction.</li>
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-network-wired mr-2"></i>Machine Learning – Deep learning models for image classification.</li>
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-camera-retro mr-2"></i>OpenCV & TensorFlow/Keras – Image preprocessing and model inference.</li>
+                </ul>
+            </section>
+    
+            <!-- Upcoming Features Section -->
+            <section class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6 hover:bg-gray-700 transition-colors duration-300">
+                <h3 class="text-lg font-semibold text-gray-300 mb-4">Upcoming Features</h3>
+                <ul class="list-disc list-inside text-gray-300 mt-2 space-y-2">
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-medkit mr-2"></i>Disease Treatment & Cure Suggestions – Provide users with recommended treatments for detected diseases.</li>
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-seedling mr-2"></i>Plant Growth Tips – Offer personalized growth and care instructions based on plant type and condition.</li>
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-mobile-alt mr-2"></i>Mobile-Friendly Design – Optimize UI for seamless mobile experience.</li>
+                    <li class="hover:text-green-400 hover:underline"><i class="fas fa-language mr-2"></i>Multi-Language Support – Expand usability for non-English-speaking users.</li>
+                </ul>
+            </section>
+    
+            <!-- Blinking Text Section -->
+            <section class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6 hover:bg-gray-700 transition-colors duration-300">
+                <p class="blink-text">Stay tuned for future updates! Contact Admin immediately in case of errors and doubts...</p>
             </section>
         </main>
     </div>
