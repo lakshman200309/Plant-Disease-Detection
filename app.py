@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import tensorflow as tf
 import numpy as np
 from tensorflow.keras.preprocessing import image
 import os
+import json
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -12,16 +13,18 @@ UPLOAD_FOLDER = "uploads"
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
-# Check if model exists before loading
-MODEL_PATH = "inceptionv3_plant_disease_fixed.h5"
+# Load the trained model
+MODEL_PATH = "model/inceptionv3_plant_disease_fixed.h5"
 if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError("Model file not found! Please check the file path.")
-
-# Load the trained model
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # Define class labels (Modify as per your dataset)
 class_labels = ['Healthy', 'Powdery Mildew', 'Rust', 'Leaf Spot', 'Blight']
+
+# Load disease information from JSON file
+with open("disease_info.json", "r") as f:
+    disease_info = json.load(f)
 
 # Function to preprocess image
 def preprocess_image(img_path):
@@ -57,7 +60,16 @@ def predict():
     prediction = model.predict(img_array)
     predicted_class = class_labels[np.argmax(prediction)]
     
-    return render_template('result.html', prediction=predicted_class)
+    # Retrieve disease information
+    disease_details = disease_info.get(predicted_class, {
+        "cure": "No information available.",
+        "growth_tips": "No information available."
+    })
+    
+    return render_template('result.html', 
+                           prediction=predicted_class, 
+                           cure=disease_details["cure"], 
+                           growth_tips=disease_details["growth_tips"])
 
 if __name__ == '__main__':
     app.run(debug=True)
